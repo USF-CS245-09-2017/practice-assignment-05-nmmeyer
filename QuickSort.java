@@ -4,13 +4,13 @@ public class QuickSort implements SortingAlgorithm
 {
 
 	public void sort (int []a){
-		quickSort(a,0,a.length); 
+		quickSort(a,0,a.length-1); 
 	}
-	public void quickSort(int[]a, int high, int low){
-		if (high-low > 1){
-			int pivot = partition(a,high,low);
-			quickSort (a,pivot-1,low);
-			quickSort (a,high,pivot+1);
+	public void quickSort(int[]a, int low, int high){
+		if (high-low > 0){
+			int pivot = partition(a,low,high);
+			quickSort (a,low,pivot-1);
+			quickSort (a,pivot+1, high);
 		}
 	}
 	
@@ -20,23 +20,24 @@ public class QuickSort implements SortingAlgorithm
 		arr[j] = temp;
 	}
 	
-	public int partition(int[]a, int high, int low){
+	public int partition(int[]a, int low, int high){
 		int pivot = low;
 		int i = low + 1;
 		int j = high; 
 		
-		while (i<j){
-			while (i<j && a[i]<a[pivot]){
+		while (i<=j){
+			while (i<=j && a[i]<=a[pivot]){
 				i++;
 			}
 			
-			while (j>i && a[j] > a[pivot]){
+			while (j>=i && a[j] >= a[pivot]){
 				j--;
 			}
-		}
-		if (i<j){
+			if (i<j){
 			swap(a,i,j); 
+			}
 		}
+		
 		swap(a, pivot, j); 
 		return j; 
 	}

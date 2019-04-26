@@ -17,7 +17,7 @@ public class InsertionSort implements SortingAlgorithm {
 			}
 			a[j+1] = temp; 
 		}
-		System.out.println(Arrays.toString(a));
+		//System.out.println(Arrays.toString(a));
 	} 
 
 	public static void main (String[] args){
